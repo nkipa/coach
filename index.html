@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>AGi Boss Zero II</title>
+    <meta name="description" content="An AI-powered coaching interface integrating Business, Life, and Startup methodologies using the Gemini API. Features framework-specific guidance and Execution Intelligence." />
+    <meta property="og:title" content="AGi Boss Zero II" />
+    <meta property="og:description" content="An AI-powered coaching interface integrating Business, Life, and Startup methodologies using the Gemini API. Features framework-specific guidance and Execution Intelligence." />
+    <meta property="og:type" content="website" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        /* LIGHT MODE PALETTE */
+        --color-bg: 241 245 249;   /* Slate 100 */
+        --color-panel: 255 255 255; /* White */
+        --color-text: 15 23 42;     /* Slate 900 */
+        --color-muted: 100 116 139; /* Slate 500 */
+        --color-border: 226 232 240; /* Slate 200 */
+      }
+      
+      .dark {
+        /* DARK MODE PALETTE */
+        --color-bg: 15 23 42;       /* Slate 900 */
+        --color-panel: 30 41 59;    /* Slate 800 */
+        --color-text: 226 232 240;  /* Slate 200 */
+        --color-muted: 148 163 184; /* Slate 400 */
+        --color-border: 51 65 85;   /* Slate 700 */
+      }
+
+      /* Custom scrollbar for chat area */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      .typing-dot {
+        animation: typing 1.4s infinite ease-in-out both;
+      }
+      .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+      .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+      
+      @keyframes typing {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+      }
+
+      /* Safe area padding utilities */
+      .pt-safe {
+        padding-top: env(safe-area-inset-top);
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .top-safe-8 {
+        top: calc(env(safe-area-inset-top) + 2rem);
+      }
+
+      /* PRINT STYLES FOR PDF GENERATION */
+      @media print {
+        body {
+          background-color: white !important;
+          color: black !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+        /* Hide UI elements */
+        #sidebar-desktop, 
+        #sidebar-mobile, 
+        #input-area, 
+        #header-mobile, 
+        #side-menu,
+        button,
+        .no-print {
+          display: none !important;
+        }
+        
+        /* Reset containers for full width printing */
+        #root, .flex, .flex-col, .h-screen {
+          display: block !important;
+          height: auto !important;
+          width: 100% !important;
+          position: static !important;
+        }
+
+        /* Chat bubbles become standard text blocks */
+        .chat-container {
+          padding: 0 !important;
+          overflow: visible !important;
+        }
+        .chat-message {
+          background: none !important;
+          border: none !important;
+          box-shadow: none !important;
+          color: black !important;
+          padding: 10px 0 !important;
+          max-width: 100% !important;
+          page-break-inside: avoid;
+        }
+        .user-message {
+          text-align: left !important;
+          font-weight: bold;
+          border-bottom: 1px solid #ddd !important;
+        }
+        .model-message {
+          border-bottom: 2px solid #333 !important;
+        }
+        /* Add a header for the print */
+        .print-header {
+          display: block !important;
+          text-align: center;
+          margin-bottom: 20px;
+          border-bottom: 2px solid black;
+          padding-bottom: 10px;
+        }
+      }
+      .print-header {
+        display: none;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'trackit-dark': 'rgb(var(--color-bg))',
+              'trackit-panel': 'rgb(var(--color-panel))',
+              'trackit-text': 'rgb(var(--color-text))',
+              'trackit-muted': 'rgb(var(--color-muted))',
+              'trackit-border': 'rgb(var(--color-border))',
+              'trackit-accent': '#3b82f6',
+              'trackit-success': '#10b981',
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-trackit-dark text-trackit-text antialiased h-screen overflow-hidden transition-colors duration-300">
+    <div id="root" class="h-full"></div>
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>

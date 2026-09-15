@@ -1,0 +1,10 @@
+{
+  "name": "AGi Boss Zero II",
+  "description": "An AI-powered coaching interface integrating Business, Life, and Startup methodologies using the Gemini API. Features framework-specific guidance and Execution Intelligence.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
